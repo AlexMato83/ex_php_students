@@ -22,14 +22,19 @@
          return $avg;
        }
        function printData($arraytwo){
+         $inputName = $_GET["name"];
+
          foreach ($arraytwo as $valueTwo) {
              $name = $valueTwo["name"];
              $lastname = $valueTwo["lastname"];
              $scores = $valueTwo["scores"];
-             echo $name . " " . $lastname . "<br>";
-             $avg = printAvg($scores);
-             echo "<br>media voti: " . $avg . "<br>";
-             echo "------<br>";
+             if ($name === $inputName){
+               echo $name . " " . $lastname . "<br>";
+               $avg = printAvg($scores);
+               echo "<br>media voti: " . $avg . "<br>";
+               echo "------<br>";
+             }
+
          }
        }
        printData($class);
