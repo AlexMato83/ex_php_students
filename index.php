@@ -11,37 +11,32 @@
   <body>
 
    <?php
-    foreach ($class as $students) {
-      $voti = $students["scores"];
-      echo $students["name"] . "<br>"
-          . $students["lastname"] . "<br>";
-      //ciclo i voti degli alunni
-      $avg = 0;
-       foreach ($voti as $voto) {
-         // richiamo funzione per stampare i voti
-         // printVotes($voto);
-         echo "voto" . $voto . " ";
-         $avg += $voto;
+       function printAvg($array){
+         $avg = 0;
+         echo "voti: ";
+         foreach ($array as $value) {
+           echo $value . " ";
+           $avg += $value;
          }
-       // stampo somma voti di ogni alunno
-       echo "<br>somma dei voti= " . $avg;
-       // stampo media $voti
-       echo "<br>media voti: " . $avg / count($voti);
-       // stampo numero dei voti di ogni alunno
-       echo "<br>numero voti: " .count($voti);
-       // stampo media dei voti di ogni alunno
-       echo "<br>media voti: " ;
+         $avg /= count($array);
+         return $avg;
+       }
+       function printData($arraytwo){
+         foreach ($arraytwo as $valueTwo) {
+             $name = $valueTwo["name"];
+             $lastname = $valueTwo["lastname"];
+             $scores = $valueTwo["scores"];
+             echo $name . " " . $lastname . "<br>";
+             $avg = printAvg($scores);
+             echo "<br>media voti: " . $avg . "<br>";
+             echo "------<br>";
+         }
+       }
+       printData($class);
 
-       echo "<br>------<br>";
-    }
-    // funzione per stampare i voti
-    // function printVotes($voto){
-    //
-    //   echo "voto" . $voto . " ";
-    //   // salvo var per somma voti
-    //
-    //   $avg += $voto;
-    // }
+
+
+
     ?>
   </body>
 </html>
